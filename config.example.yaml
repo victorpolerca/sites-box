@@ -1,0 +1,15 @@
+---
+# Ip that will be assigned to the VM. The default here is usually fine.
+vm_ip: 192.168.33.10
+
+# A local TLD that will be assigned to the VM, such as "dev" or "xyz".
+vm_hostname: dev1
+
+# Sites to setup vhosts for. Each item here should have an alphanumeric
+# "name" property. The vm_hostname will be appended it to it.
+# For example, "site1" would become "site1.dev1" if your vm_hostname
+# is "dev1".
+sites:
+  - name: site1
+  - name: site2
+  - name: site3
