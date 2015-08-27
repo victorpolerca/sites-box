@@ -36,7 +36,7 @@ Most of the setup is to get dnsmasq setup on your host machine. It's not strictl
 
   ```
   sudo mkdir -v /etc/resolver
-  sudo bash -c 'echo "nameserver 192.168.33.10" > /etc/resolver/dev1
+  sudo bash -c 'echo "nameserver 192.168.33.10" > /etc/resolver/dev1'
   sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.dnsmasq.plist
 
   # If problems arise or you change something, use the following commands
