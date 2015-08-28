@@ -39,4 +39,9 @@ Vagrant.configure("2") do |config|
       s.path = "setup/provision/setup.sh"
     end
 
+    # This is a temporary hack to address sites not loading after the
+    # host machine sleeps or is halted and started back up.
+    # @TODO Isolate and address the underlying problem here.
+    config.vm.provision "shell", inline: "sudo service apache2 restart", run: "always"
+
 end
