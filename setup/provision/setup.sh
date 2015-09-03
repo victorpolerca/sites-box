@@ -51,6 +51,7 @@ for ((i=0; i < ${#DOMAINS_ARR[@]}; i++)); do
   ServerName $DOMAIN
   ServerAlias *.$DOMAIN
   DocumentRoot /var/www/vhosts/$DOMAIN/public
+  DirectoryIndex index.html index.php
   ErrorLog /var/www/vhosts/$DOMAIN/logs/error.log
   CustomLog /var/www/vhosts/$DOMAIN/logs/access.log combined
 </VirtualHost>
