@@ -10,6 +10,33 @@ Setup requires:
 * XCode (and it's developer tools)
 * Homebrew
 
+- - -
+
+## Quick reference
+
+These are some notes that might be helpful after you've done the setup. But you need to do the setup first (see next section).
+
+* **Starting the virtual machine:** From the root of this repository, run `vagrant up --provision`
+* **Stopping the virtual machine:** From the root of this repository, run `vagrant halt`
+* **Restart the virtual machine:** From the root of this repository, run `vagrant reload --provision`
+* **My site's aren't showing up in a browser:** Stop the VM and start it up again using `up` and `halt` as described above.
+* **Accessing sites via CLI within the VM:** From the root of this repository, run `vagrant ssh` (while the VM is running). That will log you in, just as if you ssh'd to a remote server. **The `sites/` directory where your virtual hosts are located is inside the VM at `/var/www/vhosts/`**. So, you can run `cd /var/www/vhosts` to get there.
+* **Connecting to the VM's database using a GUI in your host OS** (such as Sequel Pro): Specify an ssh connection and use the parameters below. Using a client like Sequel Pro will allow you to connect to MySQL and add/remove databases as you choose.
+    * SSH Host: `192.168.33.10` (unless you used a different value in your `config.yaml`)
+    * SSH User: `vagrant`
+    * SSH Password: `vagrant`
+    * SSH Port: *Leave empty or use* `22`
+    * MySQL Host: `127.0.0.1`
+    * MySQL User: `root`
+    * MySQL Password: `root`
+    * MySQL Port: `3306`
+* **Creating/connecting to a database in the VM:** Say you're developing a WordPress site and need to create a new database and set the connection information in the `wp-config.php` file -- you can use a GUI like Sequel Pro as described above to connect to MySQL then freely create databases as needed. Make a note of the name you use for your project's database, then reference it in your `wp-config.php` database settings (as `DB_NAME`). The other database settings would be:
+    * `DB_USER`: `root`
+    * `DB_PASSWORD`: `root`
+    * `DB_HOST`: `localhost`
+
+- - -
+
 ## Setup
 
 Most of the setup is to get dnsmasq setup on your host machine. It's not strictly necessary, but it'll allow you to use wildcard domains on your sites, which is nice for WordPress multisite and similar projects.
