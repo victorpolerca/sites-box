@@ -11,6 +11,19 @@ sudo apt-get upgrade -y
 sudo apt-get install dnsmasq php5-xdebug pkg-config cmake -y
 sudo service apache2 restart
 
+# Install RVM if it isn't already here.
+# @see https://rvm.io/rvm/install
+if ! type rvm > /dev/null; then
+  gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+  \curl -sSL https://get.rvm.io | bash -s stable --ruby
+  source /home/vagrant/.rvm/scripts/rvm
+fi
+
+# Gems - update, install some not included w/scotchbox, RVM.
+gem update
+gem install compass net-sftp net-ssh
+gem clean
+
 # Add Composer to PATH.
 export PATH="~/.composer/vendor/bin:$PATH"
 
