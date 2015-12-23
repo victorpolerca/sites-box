@@ -8,7 +8,7 @@ sudo apt-get update
 sudo apt-get upgrade -y
 
 # Add extras not included w/scotchbox.
-sudo apt-get install dnsmasq php5-xdebug -y
+sudo apt-get install dnsmasq php5-xdebug pkg-config cmake -y
 sudo service apache2 restart
 
 # Add Composer to PATH.
