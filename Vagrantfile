@@ -10,6 +10,9 @@ Vagrant.configure("2") do |config|
     config.vm.hostname = CONF['vm_hostname']
     config.hostmanager.aliases = Array.new
 
+    config.ssh.username = CONF['ssh_username'] || "vagrant"
+    config.ssh.password = CONF['ssh_password'] || "vagrant"
+
     # Add each site to our hostmanager aliases, appending the
     # vm's hostname.
     CONF['sites'].each do |site|
