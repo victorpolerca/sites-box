@@ -34,6 +34,7 @@ These are some notes that might be helpful after you've done the setup. But you 
     * `DB_USER`: `root`
     * `DB_PASSWORD`: `root`
     * `DB_HOST`: `localhost`
+* **Upgrading:** The virtual machine itself is Scotch Box, and you may get a message that Scotch Box is out of date. To update it, run `vagrant box update` from the root of this repository. Then run `vagrant up` (or, if already running, `vagrant reload`).
 
 - - -
 
