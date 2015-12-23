@@ -14,11 +14,6 @@ sudo service apache2 restart
 # Add Composer to PATH.
 export PATH="~/.composer/vendor/bin:$PATH"
 
-# Install WPCLI
-curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-chmod +x wp-cli.phar
-sudo mv wp-cli.phar /usr/local/bin/wp
-
 # Setup dnsmasq for VM.
 echo -e "address=/$3/$2" | sudo tee /etc/dnsmasq.d/$3
 sudo /etc/init.d/dnsmasq restart
