@@ -8,8 +8,24 @@ sudo apt-get update
 sudo apt-get upgrade -y
 
 # Add extras not included w/scotchbox.
-sudo apt-get install dnsmasq php5-xdebug pkg-config cmake -y
+sudo apt-get install dnsmasq php5-xdebug pkg-config cmake php-codesniffer phpunit -y
 sudo service apache2 restart
+
+# Install PHP Compatibility standard for codesniffer if not already present.
+if [ ! -d '/usr/share/php/PHP/CodeSniffer/Standards/PHPCompatibility-5.6' ]; then
+  cd /usr/share/php/PHP/CodeSniffer/Standards/
+  sudo mkdir PHPCompatibility-5.6
+  sudo curl -Lo PHPCompatibility.zip https://github.com/wimg/PHPCompatibility/archive/5.6.zip
+  sudo unzip PHPCompatibility.zip
+  sudo rm PHPCompatibility.zip
+  cd ~
+fi
+
+# Install Codeception if it isn't already here.
+if ! type codecept > /dev/null; then
+  sudo wget http://codeception.com/codecept.phar -O /usr/local/bin/codecept
+  sudo chmod +x /usr/local/bin/codecept
+fi
 
 # Install RVM if it isn't already here.
 # @see https://rvm.io/rvm/install
