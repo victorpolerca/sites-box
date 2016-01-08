@@ -8,7 +8,7 @@ sudo apt-get update
 sudo apt-get upgrade -y
 
 # Add extras not included w/scotchbox.
-sudo apt-get install openjdk-7-jre-headless dnsmasq php5-xdebug pkg-config cmake php-codesniffer phpunit libssh2-1-dev libssh2-php -y
+sudo apt-get install subversion openjdk-7-jre-headless dnsmasq php5-xdebug pkg-config cmake php-codesniffer phpunit libssh2-1-dev libssh2-php -y
 sudo service apache2 restart
 
 # Install PHP Compatibility standard for codesniffer if not already present.
