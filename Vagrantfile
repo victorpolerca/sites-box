@@ -24,18 +24,23 @@ Vagrant.configure("2") do |config|
     #  the VM without this).
     # @TODO Add support for other providers (i.e, VMWare)
     config.vm.provider :virtualbox do |vb|
+      # vb.memory = 4096
+      # vb.cpus = 2
+      # vb.customize ["modifyvm", :id, "--ioapic", "on"]
       vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+      vb.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
     end
 
     config.vm.box = "scotch/box"
     config.vm.network "private_network", ip: CONF['vm_ip']
-    config.vm.synced_folder "sites/", "/var/www/vhosts", :nfs => { :mount_options => ["dmode=777","fmode=666"] }
+    config.vm.synced_folder "~/Projects", "/var/www/vhosts", :nfs => { :mount_options => ["dmode=777","fmode=666"] }
     config.hostmanager.enabled = true
     config.hostmanager.manage_host = true
 
     # Format the domains as a comma-separated list
     # to pass into the shell script.
     vhosts = '"' + config.hostmanager.aliases.join(",") + '"';
+
 
     config.vm.provision "shell" do |s|
       s.args = vhosts + " " + CONF['vm_ip'] + " " + config.vm.hostname

@@ -4,8 +4,8 @@
 echo "Starting VM..."
 
 # Keep packages up to date.
-sudo apt-get update
-sudo apt-get upgrade -y
+# sudo apt-get update
+# sudo apt-get upgrade -y
 
 # Add extras not included w/scotchbox.
 sudo apt-get install subversion openjdk-7-jre-headless dnsmasq php5-xdebug pkg-config cmake php-codesniffer phpunit libssh2-1-dev libssh2-php -y
@@ -29,11 +29,11 @@ fi
 
 # Install RVM if it isn't already here.
 # @see https://rvm.io/rvm/install
-if ! type rvm > /dev/null; then
-  gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-  \curl -sSL https://get.rvm.io | bash -s stable --ruby
-  source /home/vagrant/.rvm/scripts/rvm
-fi
+# if ! type rvm > /dev/null; then
+#   gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+#   \curl -sSL https://get.rvm.io | bash -s stable --ruby
+#   source /home/vagrant/.rvm/scripts/rvm
+# fi
 
 # Gems - update, install some not included w/scotchbox, RVM.
 gem update
@@ -88,4 +88,3 @@ done
 
 echo "Added and enabled vhosts. Restarting Apache..."
 sudo service apache2 restart
-
